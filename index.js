@@ -21,13 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault()
     const username = document.getElementById('name-input').value
     const newJokeLi = document.createElement('li')
-    if(username === "") return;
-    fetchJoke()
-    .then(() => {
-      newJokeLi.innerHTML = `
-      <span class="username">${username} says:</span> ${joke}
-      `
-    })
+    if(username === "") {
+      alert("please enter your name. thank you.")
+    return
+    } else {
+      fetchJoke()
+      .then(() => {
+        newJokeLi.innerHTML = `
+        <span class="username">${username} says:</span> ${joke}
+        `
+      })
+    };
     
     jokeList.appendChild(newJokeLi)
     event.target.reset()
